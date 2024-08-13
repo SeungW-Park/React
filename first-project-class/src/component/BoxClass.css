@@ -1,0 +1,53 @@
+.box-container {
+  border: 2.5px solid green;
+  border-radius: 5px;
+  width: 45%;
+  height: 100%;
+  padding: .8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.win {
+  border: 2.5px solid green;
+}
+
+.lose {
+  border: 2.5px solid red;
+}
+
+.tie {
+  border: 2.5px solid black;
+}
+
+.box-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.result-img {
+  width: 95%;
+  height: 70%;
+  background-size: cover;
+}
+
+.result-text {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: green;
+}
+
+.win-text {
+  color: green;
+}
+
+.lose-text {
+  color: red;
+}
+
+.tie-text {
+  color: black;
+}
