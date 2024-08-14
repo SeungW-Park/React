@@ -97,7 +97,7 @@ render() {
     return (
       <div className="background">
       <div className="main-container">
-        <div className="game-title"> 추억의 가위바위보 게임 👉 ✊ 🖐️</div>
+        <div className="game-title"> 추억의 가위바위보 게임 <span class="title-icon">👉 ✊ 🖐️</span></div>
         <div className="result-container">
           <div className="result-wrapper">
             <div className="point-area">

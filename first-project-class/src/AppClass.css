@@ -51,7 +51,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 3rem;
+  padding: .8rem 3rem;
 }
 
 .point-area {
@@ -132,4 +132,95 @@
 .select-item > img {
   width: 55px;
   height: 55px;
+}
+
+@media screen and (max-width: 576px) {
+  .main-container {
+    width: 90%;
+    height: 85%;
+  }
+
+  .game-title { 
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .title-icon { display: none; }
+
+  .result-container {
+    /* border: solid; */
+    width: 92%;
+    height: 10%;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .result-wrapper {
+    width: 67%;
+    padding: .5rem 1.1rem;
+    justify-content: center;
+    gap: 12%;
+  }
+
+  .point-title {
+    font-size: .7rem;
+  }
+
+  .reset-button {
+    width: calc(25%);
+  }
+
+  .result-box-wrapper {
+    width: 90%;
+    height: 60%;
+    flex-direction: column;
+    /* border: solid; */
+    margin-bottom: 0;
+    gap: .8rem;
+  }
+
+  .result-box-wrapper > .divide-line {
+    display: none;
+  }
+
+  .select-wrapper {
+    /* border: solid; */
+    width: 90%;
+    height: 12%;
+    /* margin-top: 1rem; */
+    position: relative;
+    top: .8rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .result-container {
+    width: 100%;
+  }
+
+  .point-title {
+    font-size: .65rem;
+  }
+
+  .select-wrapper {
+    width: 100%;
+    height: 10%;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-height: 750px) {
+  .main-container {
+    height: 95%;
+  }
+
+  .game-title {
+    margin-bottom: 0;
+  }
+
+  .select-wrapper {
+    height: 8%;
+    position: relative;
+    top: 1rem;
+  }
 }
