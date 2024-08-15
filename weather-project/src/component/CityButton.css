@@ -1,0 +1,35 @@
+.city-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  row-gap: 15px;
+}
+
+.city-button > button {
+  width: 80px;
+  height: 35px;
+  border-radius: 10px;
+  border: none;
+  background-color: #e5eefa;
+  color: #4067f7;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.city-button > button:hover {
+  transform: translate(-3.5px, -3.5px);
+  box-shadow: 4px 3px #4067f7;
+}
+
+.city-button > button.active {
+  background-color: #4067f7;
+  color: #f3f3f3;
+}
+
+.city-button > button.active:hover {
+  box-shadow: 4px 3px #bcd6f7;
+}
