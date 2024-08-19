@@ -39,6 +39,7 @@ const Navbar = ({ toggle, setToggle, authenticate, setAuthenticate }) => {
       }
       navigate(`/?q=${keyword}`);
       event.target.value = "";
+      setKeyword('');
     }
   };
 
