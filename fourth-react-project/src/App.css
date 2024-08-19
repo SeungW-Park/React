@@ -26,6 +26,10 @@ nav .nav-container {
   align-items: center;
 }
 
+.nav-container .logo {
+  cursor: pointer;
+}
+
 .nav-container .x-mark {
   display: none;
 }
@@ -64,23 +68,20 @@ nav .search-area {
   width: 250px;
   height: 32px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   column-gap: 10px;
   background-color: rgba(250, 250, 252, 0.8);
   border-radius: 5px;
+  padding: 0 .7rem;
 }
 
-nav .search-area > svg {
-  position: relative;
-  left: 4%;
-}
-
-nav .search-area .search-input {
-  position: relative;
-  left: 1%;
+nav .search-area svg {
+  cursor: pointer;
 }
 
 nav .search-area .search-input input {
+  width: 100%;
   background-color: transparent;
   border: none;
   display: flex;
@@ -110,7 +111,15 @@ nav .login-area:hover {
   height: auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 2rem 0;
+  position: relative;
+}
+
+.loading-spinner {
+  /* border: solid green; */
+  position: relative;
+  top: 300px;
 }
 
 .card-wrapper {
@@ -458,10 +467,6 @@ nav .login-area:hover {
     width: 280px;
     height: 30px;
     column-gap: 0;
-  }
-
-  nav .search-area .search-input {
-    left: 4%;
   }
 
   nav .visible-none {

@@ -20,6 +20,7 @@ import Navbar from "./component/Navbar";
 function App() {
   const [authenticate, setAuthenticate] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     console.log("aaa", authenticate);
@@ -27,9 +28,17 @@ function App() {
 
   return (
     <div>
-      <Navbar toggle={toggle} setToggle={setToggle}/>
+      <Navbar
+        toggle={toggle}
+        setToggle={setToggle}
+        authenticate={authenticate}
+        setAuthenticate={setAuthenticate}
+      />
       <Routes>
-        <Route path="/" element={<ProductAll />} />
+        <Route
+          path="/"
+          element={<ProductAll loading={loading} setLoading={setLoading} />}
+        />
         <Route
           path="/login"
           element={<Login setAuthenticate={setAuthenticate} />}
