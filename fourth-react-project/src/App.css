@@ -26,6 +26,10 @@ nav .nav-container {
   align-items: center;
 }
 
+.nav-container .x-mark {
+  display: none;
+}
+
 nav ul {
   /* border: solid; */
   list-style: none;
@@ -220,6 +224,10 @@ nav .login-area:hover {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
+.card-info-under {
+  display: none;
+}
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -229,7 +237,7 @@ nav .login-area:hover {
 .login-wrapper {
   /* border: solid red; */
   width: 70%;
-  height: 100vh;
+  height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -297,4 +305,242 @@ nav .login-area:hover {
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.detail-container {
+  width: 100vw;
+  height: calc(100vw - 44px);
+  display: flex;
+  justify-content: center;
+}
+
+.detail-wrapper {
+  width: 80%;
+  /* height: auto; */
+  padding: 1.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 2rem;
+  /* border: solid red; */
+}
+
+.detail-wrapper .detail-photo {
+  /* border: 1px solid red; */
+  width: 50%;
+  height: auto;
+}
+
+.detail-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.detail-wrapper .detail-info {
+  /* border: 1px solid red; */
+  width: 50%;
+  padding: .5rem;
+}
+
+.detail-wrapper .detail-info .detail-name-price {
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-wrapper .detail-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color:rgba(0, 0, 0, 0.8);
+}
+
+.detail-wrapper .detail-price {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.detail-wrapper .detail-size {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.size-title {
+  color:rgba(0, 0, 0, 0.6);
+  text-decoration: underline;
+  margin-bottom: .5rem;
+}
+
+.detail-wrapper .detail-size div {
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  padding: .5rem .8rem;
+  cursor: pointer;
+}
+
+.detail-add-button {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.detail-add-button span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}
+
+
+@media screen and (max-width: 975px) {
+  nav {
+    width: 100vw;
+    padding: 1.5rem 0;
+    /* border: solid red; */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+  }
+
+  nav .nav-container {
+    width: 100%;
+    min-height: 35px;
+    flex-direction: column;
+    /* border: solid red; */
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-container .x-mark {
+    display: block;
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    /* border: solid; */
+    padding: .5rem;
+    cursor: pointer;
+  }
+  
+  nav ul {
+    /* border: solid red; */
+    list-style: none;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+
+  nav li {
+    /* border: solid white; */
+    width: 80%;
+    padding: .8rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  nav .nav-bar-right {
+    /* border: solid white; */
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  nav .search-area {
+    width: 280px;
+    height: 30px;
+    column-gap: 0;
+  }
+
+  nav .search-area .search-input {
+    left: 4%;
+  }
+
+  nav .visible-none {
+    display: none;
+  }
+
+  .login-wrapper {
+    /* border: solid red; */
+    width: 90%;
+    margin-top: 80px;
+  }
+
+  .login-wrapper form {
+    width: 100%;
+  }
+
+  .card-wrapper {
+    grid-gap: 80px 40px;
+    margin-top: 80px;
+  }
+
+  .card-hover .card-title, .card-price {
+    display: none;
+  }
+
+  .card-under {
+    margin-bottom: 1rem;
+  }
+
+  .card-info-under {
+    width: 100%;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: solid; */
+    font-size: 1.3rem;
+  }
+
+  .card-info-under .card-price-under {
+    font-weight: 600;
+  }
+
+  .detail-wrapper {
+    width: 100%;
+    /* height: auto; */
+    flex-direction: column;
+    align-items: center;
+    /* border: solid red; */
+    margin-top: 80px;
+  }
+
+  .detail-wrapper .detail-photo {
+    /* border: 1px solid red; */
+    width: 90%;
+    height: auto;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    /* overflow: hidden; */
+    margin-bottom: 2rem;
+  }
+
+  .detail-photo img {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .detail-wrapper .detail-info {
+    /* border: 1px solid red; */
+    width: 100%;
+    padding: .5rem;
+  }
+
+  .detail-wrapper .detail-info .detail-name-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: .5rem;
+    margin-bottom: 4rem;
+  }
 }

@@ -1,33 +1,52 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShirt, faUser } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { useState, useNavigate } from "react-router-dom";
+import { faShirt, faUser, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = () => {
+const Navbar = ({ toggle, setToggle }) => {
   const navItem = ["여성", "남성", "신생아", "아동", "Sale", "지속가능성"];
   const navigate = useNavigate();
 
   const goToLogin = () => {
-    navigate('/login');
-  }
+    navigate("/login");
+  };
+
+  const goToMain = () => {
+    navigate("/");
+  };
+
+  const onClickToggleHandler = () => {
+    setToggle(!toggle);
+    console.log("toggle:", toggle);
+  };
 
   return (
     <nav>
       <div className="nav-container">
+        <FontAwesomeIcon
+          className="x-mark"
+          icon={faXmark}
+          size="xl"
+          color="#fff"
+          onClick={onClickToggleHandler}
+        />
+
         <div className="logo">
           <FontAwesomeIcon
             icon={faShirt}
             style={{ color: "#fafafc" }}
             size="lg"
+            onClick={goToMain}
           />
         </div>
 
-        <ul className="nav-bar">
+        <ul className={`nav-bar ${toggle ? "" : "visible-none"}`}>
           {navItem.map((item, index) => (
             <li key={index}>{item}</li>
           ))}
         </ul>
-        <div className="nav-bar-right">
+
+        <div className={`nav-bar-right ${toggle ? "" : "visible-none"}`}>
           <div className="search-area">
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -1,8 +1,10 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
 import ProductAll from "./page/ProductAll";
 import Login from "./page/Login";
 import ProductDetail from "./page/ProductDetail";
+import PrivateRoute from "./route/PrivateRoute";
 import Navbar from "./component/Navbar";
 
 // 1. 전체 상품 페이지, 로그인, 상품 상세페이지 만들기
@@ -16,14 +18,26 @@ import Navbar from "./component/Navbar";
 // 9. 상품을 검색할 수 있다.
 
 function App() {
+  const [authenticate, setAuthenticate] = useState(false);
+  const [toggle, setToggle] = useState(false);
+
+  useEffect(() => {
+    console.log("aaa", authenticate);
+  }, [authenticate]);
 
   return (
     <div>
-      <Navbar />
+      <Navbar toggle={toggle} setToggle={setToggle}/>
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route
+          path="/login"
+          element={<Login setAuthenticate={setAuthenticate} />}
+        />
+        <Route
+          path="/products/:id"
+          element={<PrivateRoute authenticate={authenticate} />}
+        />
       </Routes>
     </div>
   );
