@@ -13,7 +13,7 @@ const ProductAll = ({ loading, setLoading }) => {
       setLoading(true);
       const searchQuery = query.get("q") ?? "";
       const PORT_NUM = "4000";
-      const url = `http://localhost:${PORT_NUM}/products?q=${searchQuery}`;
+      const url = new URL(`https://my-json-server.typicode.com/SeungW-Park/React/fourth-react-project/products?q=${searchQuery}`);
       const res = await fetch(url);
       if (!res.ok) throw new Error(res.statusText);
       const data = await res.json();
