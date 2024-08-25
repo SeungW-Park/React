@@ -1,0 +1,229 @@
+.App {
+  padding: 0;
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+  /*border: solid red;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: linear-gradient(to left top, #b2e8fb, #fdadf5);
+
+  padding: 1rem 0;
+}
+
+.book-title {
+  color: #675a97;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.book-info {
+  display: flex;
+  flex-direction: row;
+  /*border: solid red;*/
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.create-box, .seek-box {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.17);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.4px);
+  -webkit-backdrop-filter: blur(5.4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2rem 2rem;
+  row-gap: 1rem;
+}
+
+.create-box {
+  max-height: 280px;
+}
+
+.box-title {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #8476b6;
+  padding-bottom: .3rem;
+  margin-bottom: 2rem;
+  border-bottom: 4px solid #8476b6;
+}
+
+form {
+  width: 100%;
+}
+
+.name-zone, .number-zone {
+  width: calc(100% - 2rem);
+  height: 40px;
+  /*border: solid blue;*/
+  margin-bottom: 1.5rem;
+  padding: 0 2rem 0 0;
+}
+
+form input, button {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+form input::placeholder {
+  color: #fff;
+  font-weight: 600;
+}
+
+form button {
+  margin-top: 1rem;
+  font-weight: 800;
+  background: #fff;
+  color: #666;
+  max-width: 100px;
+  cursor: pointer;
+}
+
+.contact-list {
+  width: 100%;
+  height: auto;
+  /*border: solid red;*/
+}
+
+.view-all {
+  width: 130px;
+  font-weight: 800;
+  background: #fff;
+  color: #666;
+  cursor: pointer;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.search-box {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 1.5rem;
+  /*border: solid red;*/
+  margin-bottom: 1.5rem;
+}
+
+.search-box > input, button {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.search-box > input::placeholder {
+  color: #fff;
+  font-weight: 600;
+}
+
+.search-box > button {
+  min-width: 100px;
+  width: 100px;
+  font-weight: 800;
+  background: #fff;
+  color: #666;
+  cursor: pointer;
+}
+
+.item-num {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #666666;
+  margin-bottom: 0.5rem;
+}
+
+.item-num-detail {
+  color: #675a97;
+  font-weight: 600;
+}
+
+.contact-item {
+  width: calc(100% - 40px);
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.contact-item:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.contact-item img {
+  border-radius: 10px;
+}
+
+.contact-item .item-info {
+  color: #767676;
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+}
+
+.contact-item .item-info .info-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.contact-item .item-info .info-number {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1150px) {
+  .book-info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .create-box, .seek-box {
+    width: 80%;
+  }
+}
