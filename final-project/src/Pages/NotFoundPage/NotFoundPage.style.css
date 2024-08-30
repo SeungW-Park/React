@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+.not-found-page-body {
+  font-family: "Josefin Sans", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.not-found-container {
+  /* border: solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5rem;
+}
+
+.not-found-container img {
+  width: 400px;
+}
+
+.not-found-message {
+  /* border: solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2.5rem;
+  padding: 1.5rem 0;
+}
+
+.message-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: .3rem;
+}
+
+.message-body {
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+  color: #505050;
+}
+
+@media screen and (max-width:1000px) {
+  .not-found-container {
+    width: 100%;
+    flex-direction: column;
+    row-gap: 5rem;
+    column-gap: unset;
+    /* border: solid red; */
+    padding: 2rem 0;
+  }
+
+  .not-found-container img {
+    width: 300px;
+  }
+
+  .message-title {
+    font-size: 2rem;
+  }
+
+  .message-body {
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .not-found-container img {
+  width: 250px;
+  }
+
+  .message-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: .15rem;
+  }
+}
