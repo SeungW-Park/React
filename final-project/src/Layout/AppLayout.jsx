@@ -3,6 +3,7 @@ import Logo from "../images/Logo.png";
 import "./AppLayout.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
@@ -50,6 +51,7 @@ const AppLayout = () => {
           </div>
         </div>
       </div>
+      <Outlet></Outlet>
     </div>
   );
 };
