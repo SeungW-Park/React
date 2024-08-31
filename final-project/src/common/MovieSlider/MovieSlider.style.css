@@ -23,4 +23,8 @@
   .carousel-container {
     height: 300px;
   }
+
+  .slide-title {
+    font-size: 2.5rem;
+  }
 }
