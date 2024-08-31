@@ -10,7 +10,7 @@ const AppLayout = () => {
     <div>
       <div className="nav-bar">
         <div className="logo">
-          <img src={Logo}></img>
+          <img src={Logo} alt='로고사진'></img>
         </div>
         <ul className="menu-items">
           <li className="menu-item">Home</li>
@@ -28,7 +28,7 @@ const AppLayout = () => {
         </div>
         <div className="menu-icon">
           <input type="checkbox" id="menuicon"></input>
-          <label for="menuicon">
+          <label htmlFor="menuicon">
             <span></span>
             <span></span>
             <span></span>

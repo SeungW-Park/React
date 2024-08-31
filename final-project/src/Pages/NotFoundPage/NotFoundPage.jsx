@@ -5,7 +5,7 @@ const NotFoundPage = () => {
   return (
     <div className="not-found-page-body">
       <div className="not-found-container">
-        <img src="https://images.squarespace-cdn.com/content/v1/51cdafc4e4b09eb676a64e68/1470175715831-NUJOMI6VW13ZNT1MI0VB/image-asset.jpeg?format=750w"></img>
+        <img src="https://images.squarespace-cdn.com/content/v1/51cdafc4e4b09eb676a64e68/1470175715831-NUJOMI6VW13ZNT1MI0VB/image-asset.jpeg?format=750w" alt='404 에러 사진'></img>
         <div className="not-found-message">
           <div className="message-title">AWWW... DON'T CRY.</div>
           <div className="message-body">
