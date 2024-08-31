@@ -6,13 +6,12 @@ import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
 
 const Banner = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
-  console.log("ddd", data);
 
   if (isLoading) {
-    <h1>LOADING...</h1>;
+    return <h1>LOADING...</h1>;
   }
   if (isError) {
-    <Alert variant="danger">{error.message}</Alert>;
+    return <Alert variant="danger">{error.message}</Alert>;
   }
 
   return (

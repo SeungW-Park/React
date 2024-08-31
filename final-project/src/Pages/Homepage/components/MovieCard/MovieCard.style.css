@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.movie-card {
+  width: 220px;
+  aspect-ratio: 2 / 3;
+  background-size: cover;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.movie-card:hover {
+  transform: scale(1.1) translateZ(20px);
+  z-index: 2;
+}
+
+.movie-card-info {
+  width: 90%;
+  height: 100%;
+  background: rgba(43, 41, 41, 0.4);
+  opacity: 0;
+  transition: all 0.25s;
+  color: white;
+  font-weight: bold;
+  overflow-wrap: break-word;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: .5rem 1rem;
+}
+
+.movie-card-info:hover {
+  opacity: 1;
+}
+
+.movie-title {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: .1rem;
+}
+
+.genre-badge {
+  /* border: solid red; */
+  display: flex;
+  align-items: center;
+  gap: 10px 10px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: rgb(215, 29, 29);
+  padding: .2rem;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.vote-average {
+  margin-bottom: .5rem;
+  font-weight: 800;
+}
+
+.movie-popularity {
+  margin-bottom: .5rem;
+  font-weight: 800;
+}
+
+.movie-adult {
+  font-family: 'Bebas Neue', sans-serif;
+  font-style: oblique;
+  font-size: 1.3rem;
+  letter-spacing: .07rem;
+  color:rgb(215, 29, 29);
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 500px) {
+  .movie-card {
+    width: 165px;
+  }
+
+  .movie-title {
+    font-size: 1.5rem;
+  }
+
+  .genre-badge {
+    width: 85%;
+    font-size: .825rem;
+  }
+
+  .badge {
+    padding: .2rem;
+  }
+
+  .vote-average {
+    font-size: .825rem;
+  }
+
+  .movie-popularity {
+    font-size: .825rem;
+  }
+
+  .movie-adult {
+    font-size: 1.15rem;
+  }
+}

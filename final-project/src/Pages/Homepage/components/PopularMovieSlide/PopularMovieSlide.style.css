@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.slide-container {
+  padding: 2rem 0;
+}
+
+.slide-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 24px 10px 0px 20px;
+  letter-spacing: .2rem;
+}
+
+.carousel-container {
+  /* border: solid red; */
+  height: 400px;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .carousel-container {
+    height: 300px;
+  }
+}

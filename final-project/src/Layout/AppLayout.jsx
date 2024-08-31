@@ -18,7 +18,7 @@ const AppLayout = () => {
   };
 
   return (
-    <div>
+    <div className="total-container">
       <div className="nav-bar">
         <div className="logo" onClick={goToHome}>
           <img src={Logo} alt="로고사진"></img>

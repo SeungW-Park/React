@@ -1,13 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Nerko+One&display=swap');
 
 .nav-bar {
-  width: 100%;
+  width: calc(100% - 80px);
   height: 100px;
   display: flex;
   align-items: center;
   padding: 0 0 0 5rem;
   font-family: 'Josefin Sans', sans-serif;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  background-color: white;
+  top: 0;
+  z-index: 2000;
+}
+
+.logo {
+  cursor: pointer;
 }
 
 .logo img {
@@ -163,6 +171,10 @@ input[id='menuicon']:checked + label + .side-bar {
 @media screen and (max-width: 950px) {
   .nav-bar {
     height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    background-color: white;
   }
 
   .nav-bar ul {
@@ -174,7 +186,7 @@ input[id='menuicon']:checked + label + .side-bar {
     flex-direction: column;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    z-index: 3;
+    z-index: 2000;
   }
 
   .side-bar ul {
@@ -247,6 +259,7 @@ input[id='menuicon']:checked + label + .side-bar {
 
 @media screen and (max-width: 600px) {
   .nav-bar {
+    width: calc(100% - 32px);
     padding: 0 0 0 2rem;
   }
 
