@@ -3,12 +3,17 @@ import Alert from "react-bootstrap/Alert";
 import "./Banner.style.css";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
+import LoadingIcons from "react-loading-icons";
 
 const Banner = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
 
   if (isLoading) {
-    return <h1>LOADING...</h1>;
+    return (
+      <div className="loading-spinner">
+        <LoadingIcons.Rings className="spinner" stroke="#ff0000" />
+      </div>
+    );
   }
   if (isError) {
     return <Alert variant="danger">{error.message}</Alert>;
