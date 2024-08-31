@@ -4,17 +4,32 @@ import "./AppLayout.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AppLayout = () => {
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate("/");
+  };
+
+  const goToMovies = () => {
+    navigate("/movies");
+  };
+
   return (
     <div>
       <div className="nav-bar">
-        <div className="logo">
-          <img src={Logo} alt='로고사진'></img>
+        <div className="logo" onClick={goToHome}>
+          <img src={Logo} alt="로고사진"></img>
         </div>
         <ul className="menu-items">
-          <li className="menu-item">Home</li>
-          <li className="menu-item">Movie</li>
+          <li className="menu-item" onClick={goToHome}>
+            Home
+          </li>
+          <li className="menu-item" onClick={goToMovies}>
+            Movie
+          </li>
         </ul>
         <div className="search-area">
           <input type="text" placeholder="Type search value" />
@@ -45,8 +60,12 @@ const AppLayout = () => {
               </button>
             </div>
             <ul className="menu-items-sm">
-              <li className="menu-item">Home</li>
-              <li className="menu-item">Movie</li>
+              <li className="menu-item" onClick={goToHome}>
+                Home
+              </li>
+              <li className="menu-item" onClick={goToMovies}>
+                Movie
+              </li>
             </ul>
           </div>
         </div>
