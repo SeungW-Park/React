@@ -4,9 +4,12 @@ import "./Banner.style.css";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
 import LoadingIcons from "react-loading-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 
 const Banner = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
+  // console.log("ddd", data);
 
   if (isLoading) {
     return (
@@ -24,10 +27,22 @@ const Banner = () => {
       <ParallaxBanner className="banner">
         <ParallaxBannerLayer
           image={`https://image.tmdb.org/t/p/w1066_and_h600_bestv2${data?.results[0].backdrop_path}`}
-          speed={-20}
+          speed={-25}
         />
         <ParallaxBannerLayer className="banner-title">
           <h1>{data?.results[0].original_title}</h1>
+        </ParallaxBannerLayer>
+        <ParallaxBannerLayer className="banner-desc-icon">
+          <div className="banner-desc-icon-div">
+            <FontAwesomeIcon
+              icon={faCircleQuestion}
+              size="2xl"
+              style={{ color: "#ffffff" }}
+            />
+          </div>
+          <div className="banner-desc-div">
+            {data?.results[0].overview}
+          </div>
         </ParallaxBannerLayer>
       </ParallaxBanner>
     </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import "./MovieCard.style.css";
+import noImage from "../../images/noimage.png";
 import { Badge } from "react-bootstrap";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,10 +22,9 @@ const MovieCard = ({ movie }) => {
   return (
     <div
       style={{
-        backgroundImage:
-          "url(" +
-          `https://media.themoviedb.org/t/p/w300_and_h450_bestv2${movie.poster_path}` +
-          ")",
+        backgroundImage: 
+          `url(${movie.poster_path ? `https://media.themoviedb.org/t/p/w300_and_h450_bestv2${movie.poster_path}` : noImage})`,
+        backgroundPosition: 'center',
       }}
       className="movie-card"
     >

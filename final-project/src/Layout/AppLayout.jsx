@@ -5,9 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const AppLayout = () => {
   const navigate = useNavigate();
+  const [keyword, setKeyword] = useState();
 
   const goToHome = () => {
     navigate("/");
@@ -15,6 +17,13 @@ const AppLayout = () => {
 
   const goToMovies = () => {
     navigate("/movies");
+  };
+
+  const searchByKeyword = (event) => {
+    event.preventDefault();
+    // url 바꿔주기
+    navigate(`/movies?q=${keyword}`);
+    setKeyword("");
   };
 
   return (
@@ -31,16 +40,21 @@ const AppLayout = () => {
             Movie
           </li>
         </ul>
-        <div className="search-area">
-          <input type="text" placeholder="Type search value" />
-          <button className="search-button">
+        <form className="search-area" onSubmit={searchByKeyword}>
+          <input
+            type="text"
+            placeholder="Type search value"
+            value={keyword}
+            onChange={(event) => setKeyword(event.target.value)}
+          />
+          <button className="search-button" type="submit">
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               size="lg"
               color="#000"
             ></FontAwesomeIcon>
           </button>
-        </div>
+        </form>
         <div className="menu-icon">
           <input type="checkbox" id="menuicon"></input>
           <label htmlFor="menuicon">
@@ -49,16 +63,21 @@ const AppLayout = () => {
             <span></span>
           </label>
           <div className="side-bar">
-            <div className="search-area-sm">
-              <input type="text" placeholder="Type search value" />
-              <button className="search-button">
+            <form className="search-area-sm" onSubmit={searchByKeyword}>
+              <input
+                type="text"
+                placeholder="Type search value"
+                value={keyword}
+                onChange={(event) => setKeyword(event.target.value)}
+              />
+              <button className="search-button" type="submit">
                 <FontAwesomeIcon
                   icon={faMagnifyingGlass}
                   size="lg"
                   color="#000"
                 ></FontAwesomeIcon>
               </button>
-            </div>
+            </form>
             <ul className="menu-items-sm">
               <li className="menu-item" onClick={goToHome}>
                 Home
