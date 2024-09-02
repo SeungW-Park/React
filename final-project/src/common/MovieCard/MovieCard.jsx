@@ -2,11 +2,13 @@ import React from "react";
 import "./MovieCard.style.css";
 import noImage from "../../images/noimage.png";
 import { Badge } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeartCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 const MovieCard = ({ movie }) => {
+  const navigate = useNavigate();
   const { data: genreData } = useMovieGenreQuery();
 
   const showGenre = (genreIdList) => {
@@ -19,6 +21,11 @@ const MovieCard = ({ movie }) => {
     return genreNameList;
   };
 
+  const goToDetailPage = (movie_id) => {
+    console.log('clicked');
+    navigate(`/movies/${movie_id}`);
+  }
+
   return (
     <div
       style={{
@@ -27,6 +34,7 @@ const MovieCard = ({ movie }) => {
         backgroundPosition: 'center',
       }}
       className="movie-card"
+      onClick={() => goToDetailPage(movie.id)}
     >
       <div className="movie-card-info">
         <h1 className="movie-title">

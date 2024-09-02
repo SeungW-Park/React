@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MoviePage.style.css";
 import { useSearchMovieQuery } from "../../hooks/useSearchMovie";
 import { useSearchParams } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import LoadingIcons from "react-loading-icons";
 import MovieCard from "../../common/MovieCard/MovieCard";
+import ReactPaginate from "react-paginate";
 
-// 경로 2가지
-// nav바에서 클릭해서 온 경우 => popular movie 보여주기
-// keyword를 입력해서 온 경우 => keyword와 관련된 영화들을 보여줌
 
-// 페이지네이션 설치
-// 페이지 스테이트 만들기
-// 페이지네이션 클릭할때마다 페이지 바꿔주기
-// page 값이 바뀔때마다 useSearchMovie에 페이지까지 넣어서 render
 const MoviePage = () => {
   const [query, setQuery] = useSearchParams();
+  const [page, setPage] = useState(1);
   const keyword = query.get("q");
 
-  const { data, isLoading, isError, error } = useSearchMovieQuery({ keyword });
+  const { data, isLoading, isError, error } = useSearchMovieQuery({ keyword, page });
   console.log("ddd", data);
+
+  const handlePageClick = ({ selected }) => {
+    setPage(selected + 1);
+    console.log('page set', page);
+  };
 
   if (isLoading) {
     return (
@@ -58,9 +58,30 @@ const MoviePage = () => {
       </form>
       <div className="card-wrapper">
         {data?.results.map((movie, index) => (
-          <MovieCard movie={movie} key={index} />
+          <MovieCard movie={movie} key={index}/>
         ))}
       </div>
+      <ReactPaginate
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={1}
+        pageCount={data?.total_pages} // 전체 페이지
+        previousLabel="<"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakLabel="..."
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
+        renderOnZeroPageCount={null}
+        forcePage={page - 1}
+      />
     </div>
   );
 };
