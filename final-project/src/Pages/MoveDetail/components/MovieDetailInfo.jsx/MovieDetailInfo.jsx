@@ -6,10 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeartCirclePlus,
   faSackDollar,
+  faPlay,
 } from "@fortawesome/free-solid-svg-icons";
 import { useViewMovieDetailQuery } from "../../../../hooks/useViewMovieDetail";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const MovieDetailInfo = ({ id }) => {
+const MovieDetailInfo = ({ id, setModalShow }) => {
   const { data, isLoading, isError, error } = useViewMovieDetailQuery({ id });
   // console.log("vvv", data);
 
@@ -47,7 +49,12 @@ const MovieDetailInfo = ({ id }) => {
           }}
         ></div>
         <div className="detail-inform">
-          <div className="detail-title">{data?.original_title}</div>
+          <div className="detail-title">
+            <span className="detail-title-title">{data?.original_title}</span>
+            <span className="detail-title-trailer" onClick={() => setModalShow(true)}>
+              <FontAwesomeIcon icon={faPlay} style={{ color: "#FFFFFF" }} />{" "}
+            </span>
+          </div>
           <div className="genre-wrapper">
             {data?.genres.map((genre) => {
               return (
@@ -74,6 +81,7 @@ const MovieDetailInfo = ({ id }) => {
           <div className="detail-release">Release : {data?.release_date}</div>
         </div>
       </div>
+      <div className="detail-grad"></div>
     </div>
   );
 };

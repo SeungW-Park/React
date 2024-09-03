@@ -22,7 +22,7 @@ const MovieCard = ({ movie }) => {
   };
 
   const goToDetailPage = (movie_id) => {
-    console.log('clicked');
+    // console.log('clicked');
     navigate(`/movies/${movie_id}`);
   }
 

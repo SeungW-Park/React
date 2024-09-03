@@ -13,7 +13,7 @@ const MovieRecommendation = ({ id }) => {
     isError,
     error,
   } = useMovieRecommendationQuery({ id });
-  console.log("rec:", recData);
+  // console.log("rec:", recData);
 
   if (isLoading) {
     return (

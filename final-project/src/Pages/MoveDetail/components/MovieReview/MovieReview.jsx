@@ -7,7 +7,12 @@ import { Alert } from "react-bootstrap";
 const MovieReview = ({ id }) => {
   const [expandedReview, setExpandedReview] = useState({});
 
-  const { data: reviewData, isLoading, isError, error } = useMovieReviewQuery({ id });
+  const {
+    data: reviewData,
+    isLoading,
+    isError,
+    error,
+  } = useMovieReviewQuery({ id });
   // console.log("rrr", reviewData);
 
   const onClickMoreViewButton = (reviewId) => {
@@ -32,6 +37,11 @@ const MovieReview = ({ id }) => {
   return (
     <div className="review-container">
       <div className="review-title">Reviews</div>
+      {reviewData.results.length === 0 ? (
+        <div className="review-wrapper no-review">No Review</div>
+      ) : (
+        <div></div>
+      )}
       {reviewData?.results.map((result) => {
         return (
           <div key={result.author} className="review-wrapper">

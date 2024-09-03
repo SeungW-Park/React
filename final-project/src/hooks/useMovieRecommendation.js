@@ -10,5 +10,6 @@ export const useMovieRecommendationQuery = ({ id }) => {
     queryKey: ["movie-recommendation", { id }],
     queryFn: () => fetchMovieRecommendation({ id }),
     select: (result) => result.data,
+    gcTime: 10000,
   });
 };
