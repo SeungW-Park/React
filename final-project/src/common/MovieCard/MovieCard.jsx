@@ -38,7 +38,7 @@ const MovieCard = ({ movie }) => {
     >
       <div className="movie-card-info">
         <h1 className="movie-title">
-          {movie.title.length >= 25
+          {movie.title.length >= 20
             ? movie.title.substring(0, 25) + "..."
             : movie.title}
         </h1>
