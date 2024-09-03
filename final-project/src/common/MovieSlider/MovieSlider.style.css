@@ -15,9 +15,19 @@
 .slide-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 3rem;
-  color: rgba(0, 0, 0, 0.7);
-  margin: 24px 10px 0px 20px;
+  margin: 0 10px 0px 20px;
   letter-spacing: .2rem;
+}
+
+.slide-title.white {
+  color: white;
+  font-size: 2.2rem;
+  /* border: solid red; */
+  padding-top: 2.5rem;
+}
+
+.slide-title.black {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .carousel-container {

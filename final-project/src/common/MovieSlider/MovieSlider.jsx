@@ -13,6 +13,7 @@ const MovieSlider = ({
   isError,
   error,
   responsive,
+  isWhite
 }) => {
   if (isLoading) {
     return (
@@ -27,7 +28,7 @@ const MovieSlider = ({
 
   return (
     <div>
-      <h3 className="slide-title">{title}</h3>
+      <h3 className={`slide-title ${isWhite ? 'white' : 'black'}`}>{title}</h3>
 
       <Carousel
         infinite={true}
