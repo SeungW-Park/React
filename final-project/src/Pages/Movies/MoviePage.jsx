@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./MoviePage.style.css";
 import { useSearchMovieQuery } from "../../hooks/useSearchMovie";
 import { useSearchParams } from "react-router-dom";
@@ -7,24 +7,35 @@ import LoadingIcons from "react-loading-icons";
 import MovieCard from "../../common/MovieCard/MovieCard";
 import ReactPaginate from "react-paginate";
 
-
 const MoviePage = () => {
   const [query] = useSearchParams();
   const [page, setPage] = useState(1);
-  const keyword = query.get("q");
+  const [prevKeyword, setPrevKeyword] = useState("");
+  const keyword = query.get('q');
 
-  const { data, isLoading, isError, error } = useSearchMovieQuery({ keyword, page });
+  useEffect(() => {
+    if (keyword === "" && prevKeyword) {
+      alert('검색어를 입력해주세요.');
+      return;
+    }
+    setPrevKeyword(keyword || "");
+  }, [keyword]);
+
+  const { data, isLoading, isError, error } = useSearchMovieQuery({
+    keyword: keyword || prevKeyword,
+    page,
+  });
   console.log("ddd", data);
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
-    console.log('page set', page);
+    console.log("page set", page);
   };
 
   if (isLoading) {
     return (
       <div className="loading-spinner">
-        <LoadingIcons.ThreeDots className="spinner" stroke="#ff0000" />
+        <LoadingIcons.Rings className="spinner" stroke="#ff0000" />
       </div>
     );
   }
@@ -57,9 +68,13 @@ const MoviePage = () => {
         </div>
       </form>
       <div className="card-wrapper">
-        {data?.results.map((movie, index) => (
-          <MovieCard movie={movie} key={index}/>
-        ))}
+        {data?.results.length > 0 ? (
+          data.results.map((movie, index) => (
+            <MovieCard movie={movie} key={index} />
+          ))
+        ) : (
+          <div className="no-results">No Results</div>
+        )}
       </div>
       <ReactPaginate
         nextLabel=">"
@@ -77,7 +92,7 @@ const MoviePage = () => {
         breakLabel="..."
         breakClassName="page-item"
         breakLinkClassName="page-link"
-        containerClassName="pagination"
+        containerClassName="pagination-custom"
         activeClassName="active"
         renderOnZeroPageCount={null}
         forcePage={page - 1}

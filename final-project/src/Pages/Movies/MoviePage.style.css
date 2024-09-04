@@ -69,6 +69,24 @@ input[type="radio"]:checked + label {
   margin: 2rem 0 4rem 0;
 }
 
+.no-results {
+  /* border: solid red; */
+  width: 100%;
+  background-color: #c9c6c6;
+  height: 70px;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  letter-spacing: .1rem;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
 .loading-spinner {
   /* border: solid red; */
   position: absolute;
@@ -86,7 +104,7 @@ input[type="radio"]:checked + label {
   height: 100%;
 }
 
-.pagination {
+.pagination-custom {
   display: flex;
   column-gap: 2rem;
   list-style: none;
