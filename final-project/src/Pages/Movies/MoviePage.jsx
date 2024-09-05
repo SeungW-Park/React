@@ -12,13 +12,14 @@ import FilterDropdown from "./component/FilterDropdown/FilterDropdown";
 const MoviePage = () => {
   const [query] = useSearchParams();
   const [page, setPage] = useState(1);
-  
+
   const keyword = query.get("q");
   const [prevKeyword, setPrevKeyword] = useState("");
 
   const [isSorted, setIsSorted] = useState(false);
   const [sortedArray, setSortedArray] = useState([]);
   const [sortKeyword, setSortKeyword] = useState('');
+  const [title, setTitle] = useState('Sort');
 
   useEffect(() => {
     if (keyword === "" && prevKeyword) {
@@ -105,12 +106,15 @@ const MoviePage = () => {
           onClick={() => {
             setIsSorted(false);
             setSortedArray(data?.results);
+            setTitle('Sort');
           }}
         >
           Sort / Filter Rollback
         </button>
-        <SortDropdown sortMovies={sortMovies} />
-        <FilterDropdown />
+        <div className="dropdown-container">
+          <SortDropdown sortMovies={sortMovies} title={title} setTitle={setTitle}/>
+          <FilterDropdown />
+        </div>
       </div>
       <div className="card-wrapper">
         {(isSorted ? sortedArray : data?.results)?.length > 0 ? (

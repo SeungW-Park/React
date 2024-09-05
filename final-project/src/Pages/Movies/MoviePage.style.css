@@ -143,13 +143,26 @@ input[type="radio"]:checked + label {
 
 .filter-container {
   /* border: solid red; */
-  width: 100%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  margin-top: 1.5rem;
+  background: rgb(219, 217, 217);
+  padding: 1rem 0;
+  border-radius: 5px;
+}
+
+.dropdown-container {
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 2rem;
   row-gap: 1rem;
-  margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .filter-rollback-button {
@@ -175,9 +188,5 @@ input[type="radio"]:checked + label {
 
   .filter-04 select {
     font-size: .92rem;
-  }
-
-  .filter-container {
-    flex-direction: column;
   }
 }
