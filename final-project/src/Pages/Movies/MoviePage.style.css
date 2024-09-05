@@ -141,6 +141,33 @@ input[type="radio"]:checked + label {
   color: black;
 }
 
+.filter-container {
+  /* border: solid red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.filter-rollback-button {
+  background-color: #f56835;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: .4rem .5rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.filter-rollback-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 1);
+}
+
 @media screen and (max-width: 500px) {
   input[type="radio"] + label {
     font-size: 1rem;
@@ -148,5 +175,9 @@ input[type="radio"]:checked + label {
 
   .filter-04 select {
     font-size: .92rem;
+  }
+
+  .filter-container {
+    flex-direction: column;
   }
 }

@@ -6,16 +6,23 @@ import { Alert } from "react-bootstrap";
 import LoadingIcons from "react-loading-icons";
 import MovieCard from "../../common/MovieCard/MovieCard";
 import ReactPaginate from "react-paginate";
+import SortDropdown from "./component/SortDropdown/SortDropdown";
+import FilterDropdown from "./component/FilterDropdown/FilterDropdown";
 
 const MoviePage = () => {
   const [query] = useSearchParams();
   const [page, setPage] = useState(1);
+  
+  const keyword = query.get("q");
   const [prevKeyword, setPrevKeyword] = useState("");
-  const keyword = query.get('q');
+
+  const [isSorted, setIsSorted] = useState(false);
+  const [sortedArray, setSortedArray] = useState([]);
+  const [sortKeyword, setSortKeyword] = useState('');
 
   useEffect(() => {
     if (keyword === "" && prevKeyword) {
-      alert('검색어를 입력해주세요.');
+      alert("검색어를 입력해주세요.");
       return;
     }
     setPrevKeyword(keyword || "");
@@ -25,12 +32,59 @@ const MoviePage = () => {
     keyword: keyword || prevKeyword,
     page,
   });
-  console.log("ddd", data);
+  // console.log("ddd", data);
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
     console.log("page set", page);
   };
+
+  const sortMovies = (sortKeyword) => {
+    setSortKeyword(sortKeyword);
+    if (sortKeyword === "PopularityAscend") {
+      setIsSorted(true);
+      setSortedArray(
+        data?.results.slice().sort((a, b) => a.popularity - b.popularity)
+      );
+      console.log("popAs", sortedArray);
+    } else if (sortKeyword === "PopularityDescend") {
+      setIsSorted(true);
+      setSortedArray(
+        data?.results.slice().sort((a, b) => b.popularity - a.popularity)
+      );
+      console.log("popDs", sortedArray);
+    } else if (sortKeyword === "ReleaseDateAscend") {
+      setIsSorted(true);
+      setSortedArray(
+        data?.results.slice().sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
+      );
+      console.log('rlsAs', sortedArray);
+    } else if (sortKeyword === "ReleaseDateDescend") {
+      setIsSorted(true);
+      setSortedArray(
+        data?.results.slice().sort((a, b) => new Date(a.release_date) - new Date(b.release_date))
+      );
+      console.log('rlsDs', sortedArray);
+    } else if (sortKeyword === "VoteAverageAscend") {
+      setIsSorted(true);
+      setSortedArray(
+        data?.results.slice().sort((a, b) => a.vote_average - b.vote_average)
+      );
+      console.log('voteAvgAs', sortedArray);
+    } else if (sortKeyword === "VoteAverageDescend") {
+      setIsSorted(true);
+      setSortedArray(
+        data?.results.slice().sort((a, b) => b.vote_average - a.vote_average)
+      );
+      console.log('voteAvgDs', sortedArray);
+    }
+  };
+
+  useEffect(() => {
+    if (isSorted && data) {
+      sortMovies(sortKeyword);
+    }
+  }, [data, sortKeyword, isSorted]);
 
   if (isLoading) {
     return (
@@ -45,31 +99,22 @@ const MoviePage = () => {
 
   return (
     <div className="page-container">
-      <form className="filter-content">
-        <div className="filter-01">
-          <input type="radio" name="tab-menu" id="tab01" checked />
-          <label htmlFor="tab01">Relativity</label>
-        </div>
-        <div className="filter-02">
-          <input type="radio" name="tab-menu" id="tab02" />
-          <label htmlFor="tab02">Popularity</label>
-        </div>
-        <div className="filter-03">
-          <input type="radio" name="tab-menu" id="03" />
-          <label htmlFor="03">Latest</label>
-        </div>
-        <div className={`filter-04`}>
-          <select name="color">
-            <option value="all">All</option>
-            <option value="action">Action</option>
-            <option>Action</option>
-            <option>Action</option>
-          </select>
-        </div>
-      </form>
+      <div className="filter-container">
+        <button
+          className="filter-rollback-button"
+          onClick={() => {
+            setIsSorted(false);
+            setSortedArray(data?.results);
+          }}
+        >
+          Sort / Filter Rollback
+        </button>
+        <SortDropdown sortMovies={sortMovies} />
+        <FilterDropdown />
+      </div>
       <div className="card-wrapper">
-        {data?.results.length > 0 ? (
-          data.results.map((movie, index) => (
+        {(isSorted ? sortedArray : data?.results)?.length > 0 ? (
+          (isSorted ? sortedArray : data?.results).map((movie, index) => (
             <MovieCard movie={movie} key={index} />
           ))
         ) : (
