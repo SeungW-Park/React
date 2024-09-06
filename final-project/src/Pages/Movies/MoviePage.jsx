@@ -29,6 +29,9 @@ const MoviePage = () => {
       alert("검색어를 입력해주세요.");
       return;
     }
+    if (keyword !== prevKeyword) {
+      setPage(1);
+    }
     setPrevKeyword(keyword || "");
   }, [keyword]);
 
@@ -36,7 +39,7 @@ const MoviePage = () => {
     keyword: keyword || prevKeyword,
     page,
   });
-  // console.log("ddd", data);
+  // console.log("ddd", data); 
 
   const {
     data: filteredData,
