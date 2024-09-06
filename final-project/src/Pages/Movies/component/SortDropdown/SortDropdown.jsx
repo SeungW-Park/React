@@ -1,59 +1,65 @@
-import React, { useState } from "react";
+import React from "react";
 import { Dropdown } from "react-bootstrap";
 import "./SortDropdown.style.css";
 
-const SortDropdown = ({ sortMovies, title, setTitle }) => {
+const SortDropdown = ({ setSortKeyword, setIsFiltered, sortTitle, setSortTitle }) => {
   return (
     <Dropdown>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-        {title}
+        {sortTitle}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
         <Dropdown.Item
           onClick={() => {
-            sortMovies('PopularityAscend');
-            setTitle('Popularity Ascend');
+            setSortKeyword('popularity.asc');
+            setSortTitle('Popularity Ascend');
+            setIsFiltered(true);
           }}
         >
           Popularity Ascend
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => {
-            sortMovies('PopularityDescend');
-            setTitle('Popularity Descend');
+            setSortKeyword('popularity.desc');
+            setSortTitle('Popularity Descend');
+            setIsFiltered(true);
           }}
         >
           Popularity Descend
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => {
-            sortMovies('ReleaseDateAscend');
-            setTitle('Release Date Ascend');
+            setSortKeyword('primary_release_date.asc');
+            setSortTitle('Release Date Ascend');
+            setIsFiltered(true);
           }}
         >
           Release Date Ascend
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => {
-            sortMovies('ReleaseDateDescend');
-            setTitle('Release Date Descend');
+            setSortKeyword('primary_release_date.desc');
+            setSortTitle('Release Date Descend');
+            setIsFiltered(true);
           }}
         >
           Release Date Descend
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => {
-            sortMovies('VoteAverageAscend');
-            setTitle('Vote Average Ascend');
+            setSortKeyword('vote_average.asc');
+            setSortTitle('Vote Average Ascend');
+            setIsFiltered(true);
           }}
         >
           Vote Average Ascend
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => {
-            sortMovies('VoteAverageDescend');
-            setTitle('Vote Average Descend');
+            setSortKeyword('vote_average.desc');
+            setSortTitle('Vote Average Descend');
+            setIsFiltered(true);
           }}
         >
           Vote Average Descend

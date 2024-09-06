@@ -85,6 +85,7 @@ input[type="radio"]:checked + label {
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  padding: 1.5rem;
 }
 
 .loading-spinner {
@@ -184,6 +185,10 @@ input[type="radio"]:checked + label {
 @media screen and (max-width: 500px) {
   input[type="radio"] + label {
     font-size: 1rem;
+  }
+
+  .no-results {
+    font-size: 1.2rem;
   }
 
   .filter-04 select {

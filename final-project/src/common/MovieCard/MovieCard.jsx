@@ -10,6 +10,7 @@ import { faStar, faHeartCirclePlus } from "@fortawesome/free-solid-svg-icons";
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
   const { data: genreData } = useMovieGenreQuery();
+  // console.log('ggg', genreData);
 
   const showGenre = (genreIdList) => {
     if (!genreData) return [];
