@@ -39,17 +39,53 @@ const MoviePage = () => {
     keyword: keyword || prevKeyword,
     page,
   });
-  // console.log("ddd", data); 
+  // console.log("ddd", data);
 
-  const {
-    data: filteredData,
-    isLoading: isFilterLoading
-  } = useMovieFilterQuery({ genreKeyword, sortKeyword, page });
-  console.log(sortKeyword, genreKeyword, filteredData);
+  const { data: filteredData, isLoading: isFilterLoading } =
+    useMovieFilterQuery({ genreKeyword, sortKeyword, page });
+  // console.log(sortKeyword, genreKeyword, filteredData);
+
+  // 검색된 데이터에 필터와 정렬 적용
+  const applyFiltersAndSort = (movies) => {
+    let filteredMovies = movies;
+
+    // 장르 필터링
+    if (genreKeyword) {
+      filteredMovies = filteredMovies.filter((movie) =>
+        movie.genre_ids.includes(parseInt(genreKeyword))
+      );
+      console.log("fm", filteredMovies);
+    }
+
+    // 정렬
+    if (sortKeyword) {
+      filteredMovies = filteredMovies.slice().sort((a, b) => {
+        switch (sortKeyword) {
+          case "popularity.asc":
+            return a.popularity - b.popularity; // 낮은 순서대로 정렬
+          case "popularity.desc":
+            return b.popularity - a.popularity; // 높은 순서대로 정렬
+          case "primary_release_date.asc":
+            return new Date(a.release_date) - new Date(b.release_date); // 오래된 순
+          case "primary_release_date.desc":
+            return new Date(b.release_date) - new Date(a.release_date); // 최신 순
+          case "vote_average.asc":
+            return a.vote_average - b.vote_average; // 낮은 평점 순
+          case "vote_average.desc":
+            return b.vote_average - a.vote_average; // 높은 평점 순
+          default:
+            return 0;
+        }
+        return 0;
+      });
+    }
+
+    return filteredMovies;
+  };
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
-    console.log("page set", page);
+    // console.log("page set", page);
   };
 
   if (isLoading || isFilterLoading) {
@@ -62,6 +98,10 @@ const MoviePage = () => {
   if (isError) {
     return <Alert variant="danger">{error.message}</Alert>;
   }
+
+  const displayedMovies = applyFiltersAndSort(
+    isFiltered ? filteredData?.results : data?.results
+  );
 
   return (
     <div className="page-container">
@@ -96,14 +136,10 @@ const MoviePage = () => {
         </div>
       )}
       <div className="card-wrapper">
-        {(isFiltered ?
-          filteredData?.results
-          : data?.results
-        )?.length > 0 ? (
-          (isFiltered ?
-            filteredData?.results
-            : data?.results
-          ).map((movie, index) => <MovieCard movie={movie} key={index} />)
+        {displayedMovies?.length > 0 ? (
+          displayedMovies.map((movie, index) => (
+            <MovieCard movie={movie} key={index} />
+          ))
         ) : (
           <div className="no-results">No Results for your search.</div>
         )}
